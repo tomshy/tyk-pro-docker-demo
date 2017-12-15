@@ -7,6 +7,9 @@ services:
             - "5000:5000"
         volumes:
             - ./confs/tyk_analytics.conf:/opt/tyk-dashboard/tyk_analytics.conf
+        environment:
+            - TYK_LOGLEVEL=debug
+            - TYK_DB_LICENSEKEY=${TYK_DB_LICENSEKEY}
         depends_on:
             - tyk-redis
             - tyk-mongo
@@ -18,6 +21,8 @@ services:
             - ./confs/tyk.conf:/opt/tyk-gateway/tyk.conf
         depends_on:
             - tyk-redis
+        environment:
+            - TYK_LOGLEVEL=debug
     tyk-pump:
         image: tykio/tyk-pump-docker-pub:latest
         volumes:
