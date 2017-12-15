@@ -7,15 +7,16 @@ This compose file is designed to provide a quick, simple demo of the Tyk stack, 
 Set up your `/etc/hosts` file to include the IP of your docker daemon:
 
 ```
-127.0.0.1 www.tyk-portal-test.com
-127.0.0.1 www.tyk-test.com
+127.0.0.1 portal.docker
+127.0.0.1 dashboard.docker
+127.0.0.1 gateway.docker
 ```
 
 Note that the IP may be different depending on your installation, Windows users may find it running on `10.x.x.x`, it is important the URL stays the same because our `setup.sh` assumes this is the one you are using.
 
 ## Step 2: Add your dashboard license
 
-Open the `tyk_analytics.conf` file in the `confs/` folder and add your license string to the `"license_key": ""` section.
+Create a `.env` file as per `example.env` and add license string.
 
 ## Step 2:
 
