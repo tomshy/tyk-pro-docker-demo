@@ -3,11 +3,6 @@ Tyk API Gateway is fully on-premise solution, which include gateway, dashboard a
 This demo will run Tyk On-premise on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and Mongodb.
 This repo great for proof of concept and demo purpose, but if you want test performance, you need to move each component to separate machine, following our documentation https://tyk.io/docs/.
 
-
-# Tyk Pro Demo using Docker Swarm
-
-Please refer to [docker-swarm.md](docker-swarm.md) for detailed instructions on running this simple deployment on the Docker Swarm with Tyk cluster. Note that in order to have more than one functional gateway node a corresponding license is required.
-
 # Tyk Pro Demo using Docker
 
 This compose file is designed to provide a quick, simple demo of the Tyk stack, this includes the gateway, the dashboard and the portal.
@@ -32,7 +27,7 @@ Open the `tyk_analytics.conf` file in the `confs/` folder and add your license s
 Run docker compose:
 
 ```
-docker-compose -f docker-compose.yml -f docker-local.yml up
+docker-compose up
 ```
 
 Please note that this command may take a while to complete, as Docker needs to download and provision all of the containers.
@@ -43,11 +38,10 @@ This will run in non-daemonised mode so you can see all the output. For the next
 
 Bootstrap the instance:
 
-```
-chmod +x setup.sh 
-./setup.sh 
-```
+Open your browser to http://www.tyk-test.com:3000.  You will be presented with the Bootstrap UI to create your first organisation and admin user.
 
-## Step 5: Log in with the credentials provided
+Note, if you run into DNS issues with `www.tyk-test.com` while trying to bootstrap through the GUI, you will need to set the `host_config.hostname` value in `tyk_analytics.conf` to the public IP of your Docker daemon or simply use `localhost`
 
-The setup script will provide a username and password, as well as the URL of your portal, please note that this will be running on port 3000, not port 80.
+# Tyk Pro Demo using Docker Swarm
+
+Please refer to [docker-swarm.md](docker-swarm.md) for detailed instructions on running this simple deployment on the Docker Swarm with Tyk cluster. Note that in order to have more than one functional gateway node a corresponding license is required.
